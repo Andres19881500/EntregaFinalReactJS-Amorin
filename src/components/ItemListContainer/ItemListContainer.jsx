@@ -1,10 +1,34 @@
-import React from "react";
+import { useState } from "react";
+import { Productos,categorias } from "../Productos/Productos";
+import Item from "../Item/Item"
 import "./styles/ItemListContainer.scss";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const ItemListContainer = (prop) => {
-    return (
-        <div className="itemListContainer">¡Hola {prop.name}, aquí encontraras la mayor variedad de capsulas y maquinas de cafe en Uruguay!</div>
-    )
+const ItemListContainer = () => {
+   const [item,setItem] = useState(Productos);
+   const { id } = useParams()
+
+   const FilterCategory = new Promise((resolve,eject)=>{
+    const newProductos = Productos.filter((p)=>p.category == id)
+    resolve(newProductos)
+   },2000)
+
+
+   useEffect(()=>{
+    FilterCategory.then((response)=>{
+        setItem(response)
+    })
+   },[id])
+   return(
+    <div className="'ItemListContainer">
+        {
+            item && item.map((producto)=>{
+                return <Item producto={producto} />
+            })
+        }
+    </div>
+   )
 }
 
-export default ItemListContainer
+export default ItemListContainer;
