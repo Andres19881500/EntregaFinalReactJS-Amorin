@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Productos,categorias } from "../Productos/Productos";
+import { Productos, categorias } from "../Productos/Productos";
 import Item from "../Item/Item"
 import "./styles/ItemListContainer.scss";
 import { useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ const ItemListContainer = () => {
    const FilterCategory = new Promise((resolve,eject)=>{
     const newProductos = Productos.filter((p)=>p.category == id)
     resolve(newProductos)
-   },2000)
+   })
 
 
    useEffect(()=>{
