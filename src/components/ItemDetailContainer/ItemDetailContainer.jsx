@@ -1,9 +1,10 @@
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { Productos } from "../Productos/Productos"
 
 const ItemDetailContainer = () => {
     return (
         <div>
-            <ItemDetail />
+            <ItemDetail producto={producto} />
         </div>
     )
 }
