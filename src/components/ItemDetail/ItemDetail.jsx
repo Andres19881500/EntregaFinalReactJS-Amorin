@@ -1,11 +1,11 @@
-
+import "./ItemDetail.scss"
 const ItemDetail =({producto})=>{
     
     return(
-        <div>
+        <div className="Item-detail--area">
             <h1>{producto.name}</h1>
-            <img src={producto.img}/>
-            <p>Precio U$D</p>
+            <img src={producto.img} width={500}/>
+            <p>{`Precio U$D ${producto.price}`}</p>
         </div>
     )
 }
