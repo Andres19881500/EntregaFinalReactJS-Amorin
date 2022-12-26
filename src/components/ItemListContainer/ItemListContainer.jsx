@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {doc,getDoc,getFirestore} from 'firebase/firestore'
 import { Productos, categorias } from "../Productos/Productos";
 import Item from "../Item/Item"
 import "./styles/ItemListContainer.scss";
@@ -10,8 +11,13 @@ const ItemListContainer = () => {
    const { id } = useParams()
 
    const FilterCategory = new Promise((resolve,eject)=>{
-    const newProductos = Productos.filter((p)=>p.category == id)
-    resolve(newProductos)
+    if(id){
+        const newProductos = Productos.filter((p)=>p.category == id)
+        resolve(newProductos)
+    }
+    else{
+        resolve(Productos)
+    }
    })
 
 
