@@ -1,10 +1,8 @@
 import { BrowserRouter,Routes,Route} from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import ItemDetail from './components/ItemDetail/ItemDetail';
 import { categorias } from './components/Productos/Productos';
 import CartFinalizarCompra from './components/CartFinalizarCompra/CartFinalizarCompra';
 

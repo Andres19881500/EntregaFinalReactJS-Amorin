@@ -16,7 +16,7 @@ const ItemCount =({onChangeCount})=>{
             <h4>Agregar item</h4>
             <button onClick={()=>handlerSubtractionCount()}>-</button>
             <button onClick={()=>handlerAddCount()}>+</button>
-            <input type="text" value={value} onChange={(e)=> setValue(e.target.value)}/>
+            <input type="number" min="0" value={value} onChange={(e)=> setValue(e.target.value)}/>
     </div>
     )
 }

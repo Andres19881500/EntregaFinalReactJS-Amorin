@@ -5,8 +5,11 @@ import cart from "../../images/cart.svg"
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 
-const CartWidget = () => {
+const Cart = () => {
     const { count } = useContext(CartContext);
+    const {listaProducto} = useContext(CartContext);
+    console.log(count);
+    console.log(listaProducto);
     return (
         <div className="sectionCarrito">
             <div className="contadorCarrito">
@@ -19,4 +22,4 @@ const CartWidget = () => {
     )
 }
 
-export default CartWidget
+export default Cart

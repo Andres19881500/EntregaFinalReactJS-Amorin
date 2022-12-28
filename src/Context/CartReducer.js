@@ -10,7 +10,8 @@ export function CartReducer(state,action){
             }
 
             return{
-                ...state,
+                state,
+                count:state.count + 1,
                 count:action.payload.count,
                 producto:[action.payload.producto],
                 listaProducto:listaProductos

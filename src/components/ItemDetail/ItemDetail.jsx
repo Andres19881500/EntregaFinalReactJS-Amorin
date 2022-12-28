@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import "./ItemDetail.scss"
-import { CartContext } from "../../Context/CartContext";
+import { CartContextProvider } from "../../Context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ producto }) => {
-    const { addCount } = useContext(CartContext);
-  
+    const { addItem } = useContext(CartContextProvider);
     const handlerAddCount = (count) => {
-      addCount(count, producto);
-    };
+        addItem(item, count);
+      }
+
     return(
         <div className="Item-detail--area">
             <h1>{producto.name}</h1>
