@@ -3,22 +3,23 @@ import { useState } from "react";
 import { Productos} from "../Productos/Productos";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const ItemDetailtContainer = () => {
    const [itemDetail,setitemDetail] = useState({});
    const { id } = useParams()
-
-   const oneProduct = new Promise((resolve)=>{
-    const newProduct = Productos.find((p)=>p.id === parseInt(id) )
-    resolve(newProduct)
-   })
-
-
    useEffect(()=>{
-    oneProduct.then((response)=>{
-        setitemDetail(response)
+    const db = getFirestore();
+    const referenciaDoc = doc(db,'item', id)
+    getDoc(referenciaDoc)
+    .then((result)=>{
+        setitemDetail({
+        id:result.id,
+        ...result.data()
+      })
     })
-   },[id])
+    .catch((error)=> console.log(error))
+  }, [id])
    
    return(
     <div>
