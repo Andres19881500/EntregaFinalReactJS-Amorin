@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 
 const Cart = () => {
-    const { count } = useContext(CartContext);
-    const {listaProducto} = useContext(CartContext);
-    console.log(count);
-    console.log(listaProducto);
+    const {getQuantity} = useContext(CartContext);
+
     return (
         <div className="sectionCarrito">
             <div className="contadorCarrito">
-                <p>{count}</p>
+                <p>{getQuantity()}</p>
             </div>
             <Link to="/Cart">
                 <img src={cart} alt="carrito de compras" className="logoCarrito"/>

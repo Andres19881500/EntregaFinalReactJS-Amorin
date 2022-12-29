@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import "./ItemDetail.scss"
-import { CartContextProvider } from "../../Context/CartContext";
+import { CartContext } from "../../Context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({ producto }) => {
-    const { addItem } = useContext(CartContextProvider);
+    const { addItem } = useContext(CartContext);
     const handlerAddCount = (count) => {
-        addItem(item, count);
+        addItem(producto, count);
       }
 
     return(
