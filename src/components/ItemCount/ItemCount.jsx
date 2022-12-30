@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { addDoc, collection, doc, getFirestore, updateDoc, writeBatch } from "firebase/firestore";
 
 const ItemCount =({onChangeCount})=>{
     const [value,setValue] = useState(0)
