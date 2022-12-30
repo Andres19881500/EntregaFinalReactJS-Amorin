@@ -19,6 +19,15 @@ export const CartContextProvider =({children}) =>{
     }
     console.log(cart);
 
+    const clear = () =>{
+        setCart([])
+    }
+
+    const removeItem = (id) => {
+        setCart(cart.filter((prod)=> prod.id !== id))
+    }
+
+
     const getQuantity = () => {
         let cant = 0
         cart.forEach((e) => cant += e.count)
@@ -28,7 +37,7 @@ export const CartContextProvider =({children}) =>{
     
     return(
             <CartContext.Provider
-            value={{cart, addItem, getQuantity}}>
+            value={{cart, addItem, getQuantity, clear, removeItem}}>
                 {children}
             </CartContext.Provider>
         )

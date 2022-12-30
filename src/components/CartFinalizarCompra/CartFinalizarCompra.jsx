@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext"
+import { useState } from "react";
 import { addDoc, collection, doc, getFirestore, updateDoc, writeBatch } from "firebase/firestore";
 import './ProductosCart.scss'
 
 
 const CartFinalizarCompra = ()=>{
-    const { cart } = useContext(CartContext);
-
+    const { cart, removeItem, clear } = useContext(CartContext);
+   
     const order = {
         buyer: {
           name: "pablo",
@@ -47,14 +48,14 @@ const CartFinalizarCompra = ()=>{
                         <p>Nombre producto: {producto.name}</p>
                         <p>Precio: ${producto.price}</p>
                         <p>Cantidad: {producto.count}</p>
-                        <button>Eliminar</button>
+                        <button onClick={()=>removeItem()}>Eliminar</button>
                     </div>
                 );
             })}
             <div>
                 <p>Importe total: ${} </p>
                 <button onClick={()=>sendOrder()}>Realizar Compra</button>
-                <button>Vaciar Carrito</button>
+                <button onClick={()=>clear()}>Vaciar Carrito</button>
             </div>
         </div>
   
