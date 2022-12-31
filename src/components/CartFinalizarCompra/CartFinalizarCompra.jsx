@@ -57,7 +57,9 @@ const CartFinalizarCompra = () => {
       {cart.map((producto) => {
         return (
           <div className="productos-cart">
-            <img src={producto.img} height={80} />
+            <div>
+              <img src={producto.img} height={80} />
+            </div>
             <p>Nombre producto: {producto.name}</p>
             <p>Precio: ${producto.price}</p>
             <p>Cantidad: {producto.count}</p>
@@ -70,14 +72,18 @@ const CartFinalizarCompra = () => {
           </div>
         );
       })}
-      <div>
-        <p>Importe total: ${importeTotal} </p>
-        <button className="boton" onClick={() => sendOrder()}>
+      <div className='finalizar-compra'>
+        <div>
+          <h4>Importe total: ${importeTotal} </h4>
+        </div>
+        <div>
+          <button className="boton" onClick={() => sendOrder()}>
           Realizar Compra
-        </button>
-        <button className="boton-vaciar" onClick={() => clear()}>
+          </button>
+          <button className="boton-vaciar" onClick={() => clear()}>
           Vaciar Carrito
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   );

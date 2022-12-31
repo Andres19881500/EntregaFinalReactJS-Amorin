@@ -1,3 +1,5 @@
+import './InputsCliente.scss'
+
 const InputsCliente = ({
     inputName,
     setInputName,
@@ -7,7 +9,7 @@ const InputsCliente = ({
     setEmail,
   }) => {
     return (
-      <form>
+      <form className="form-inputs">
         <div>
           <label>Nombre</label>
           <input

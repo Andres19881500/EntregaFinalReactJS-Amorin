@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './ItemCount.scss'
 import { addDoc, collection, doc, getFirestore, updateDoc, writeBatch } from "firebase/firestore";
 
 const ItemCount =({onChangeCount})=>{
@@ -16,13 +17,19 @@ const ItemCount =({onChangeCount})=>{
         
     }
     return(
-        <div>
-            <h4>Agregar item</h4>
-            <button onClick={()=>handlerSubtractionCount()}>-</button>
-            <button onClick={()=>handlerAddCount()}>+</button>
-            <div>{value}</div>
-            <button onClick={()=>onChangeCount(value)}>Agregar carrito</button>
-    </div>
+        <div className="container-add-item">
+            <h5>Agregar item</h5>
+            <div>
+                <button className="boton-redondo" onClick={()=>handlerSubtractionCount()}>-</button>
+                <button className="boton-redondo" onClick={()=>handlerAddCount()}>+</button>
+            </div>
+            <div className="container-vale-buttons">
+                <div>
+                    <h4>{value}</h4>
+                </div>
+                <button className="boton" onClick={()=>onChangeCount(value)}>Agregar carrito</button>
+            </div>
+        </div>
     )
 }
 export default ItemCount
