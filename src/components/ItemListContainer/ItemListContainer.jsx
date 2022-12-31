@@ -1,7 +1,6 @@
 
 import { useState } from "react";
-import {collection,doc,getDoc,getDocs,getFirestore, query, where} from 'firebase/firestore'
-import { Productos, categorias } from "../Productos/Productos";
+import {collection,getDocs,getFirestore, query, where} from 'firebase/firestore'
 import Item from "../Item/Item"
 import "./styles/ItemListContainer.scss";
 import { useParams } from "react-router-dom";

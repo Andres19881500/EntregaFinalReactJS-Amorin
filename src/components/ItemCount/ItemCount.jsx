@@ -1,6 +1,5 @@
 import { useState } from "react"
 import './ItemCount.scss'
-import { addDoc, collection, doc, getFirestore, updateDoc, writeBatch } from "firebase/firestore";
 
 const ItemCount =({onChangeCount})=>{
     const [value,setValue] = useState(0)

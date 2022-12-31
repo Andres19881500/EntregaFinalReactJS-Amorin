@@ -4,10 +4,7 @@ import { CartContext } from '../../Context/CartContext';
 import {
   addDoc,
   collection,
-  doc,
   getFirestore,
-  updateDoc,
-  writeBatch,
 } from 'firebase/firestore';
 import './CartFinalizarCompra.scss';
 import InputsCliente from '../InputsCliente/InputsCliente';
@@ -18,6 +15,13 @@ const CartFinalizarCompra = () => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
 
+  const calcImporteTotal = cart.reduce((total, item) => {
+    return total + item.count*item.price
+  }, 0)
+
+  const importeTotal = calcImporteTotal
+  console.log(importeTotal);
+
   const order = {
     buyer: {
       name:  inputName ,
@@ -25,7 +29,7 @@ const CartFinalizarCompra = () => {
       email: email ,
     },
     items: [{ cart }],
-    total: 250,
+    total: {importeTotal},
   };
 
   const sendOrder = () => {
@@ -33,13 +37,6 @@ const CartFinalizarCompra = () => {
     const ordersCollection = collection(db, 'orders');
     addDoc(ordersCollection, order).then(({ id }) => alert(id));
   };
-
-  const calcImporteTotal = cart.reduce((total, item) => {
-    return total + item.count*item.price
-  }, 0)
-
-  const importeTotal = calcImporteTotal
-  console.log(importeTotal);
   
   return (
     <div className="contenedor-general-cart">
